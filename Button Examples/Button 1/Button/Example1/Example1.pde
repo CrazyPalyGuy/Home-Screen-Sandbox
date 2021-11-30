@@ -7,7 +7,7 @@ Boolean rect=false, circle=false;
 
 void setup()
 {
-  size(500, 400);
+  fullScreen();
   population();
   textSetup();
 }//End setup()
