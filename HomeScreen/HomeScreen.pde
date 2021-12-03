@@ -1,5 +1,5 @@
 //Global Variables
-color circleRed = #FF0303, white=255, black=0;
+color circlered = #FF0303, white=255, black=0;
 float ptDiameter, rectWidth, rectHeight;
 float pt1X, pt1Y, pt2X, pt2Y, pt3X, pt3Y, pt4X, pt4Y;
 float pt5X, pt5Y, pt6X, pt6Y, pt7X, pt7Y, pt8X, pt8Y;
@@ -20,11 +20,14 @@ float button6X, button6Y, button6Width, button6Height;
 float button7X, button7Y, button7Width, button7Height;
 float button8X, button8Y, button8Width, button8Height;
 float button9X, button9Y, button9Width, button9Height;
-
+color purple = #D003FF, yellow = #FAFF03; // Combining similar definitions and assignments with a comma
+// this tracking of variables does not match the description of the image
+color boarder = purple, inside = yellow; // Matches descritption of image
+int rectX, rectY, outside;
 
 void setup() {
   fullScreen();
-  ptDiameter = displayWidth * 1 / 27.77777777;
+  ptDiameter = displayWidth * 1 / 45;
   rectWidth = displayWidth*1/3;
   rectHeight = displayHeight*1/3;
   //
@@ -93,6 +96,15 @@ void setup() {
 }
 
 void draw() {
+  // Hovering Effect
+  if (mouseX>rectX && mouseX<rectX+rectWidth && mouseY>rectY && mouseY<rectY+rectHeight) {
+    boarder = yellow;
+    inside = purple;
+  } else {
+    boarder = purple;
+    inside = yellow;
+  } // End of IF for Hovering Effect
+  
   rect(pt1X, pt1Y, rectWidth, rectHeight);
   rect(pt2X, pt2Y, rectWidth, rectHeight);
   rect(pt3X, pt3Y, rectWidth, rectHeight);
@@ -105,7 +117,7 @@ void draw() {
   rect(pt10X, pt10Y, rectWidth, rectHeight);
   rect(pt11X, pt11Y, rectWidth, rectHeight);
   //
-  fill(black);
+  fill(white);
   rect(button1X, button1Y, button1Width, button1Height);
   rect(button2X, button2Y, button2Width, button2Height);
   rect(button3X, button3Y, button3Width, button3Height);
@@ -115,7 +127,6 @@ void draw() {
   rect(button7X, button7Y, button7Width, button7Height);
   rect(button8X, button8Y, button8Width, button8Height);
   rect(button9X, button9Y, button9Width, button9Height);
-
   //
   ellipse(pt1X, pt1Y, ptDiameter, ptDiameter);
   ellipse(pt2X, pt2Y, ptDiameter, ptDiameter);
@@ -127,7 +138,7 @@ void draw() {
   ellipse(pt10X, pt10Y, ptDiameter, ptDiameter);
   ellipse(pt11X, pt11Y, ptDiameter, ptDiameter);
   //
-  fill(black);
+  fill(white);
   ellipse(pt4X, pt4Y, ptDiameter, ptDiameter);
   ellipse(pt8X, pt8Y, ptDiameter, ptDiameter);
   ellipse(pt12X, pt12Y, ptDiameter, ptDiameter);
